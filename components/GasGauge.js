@@ -11,24 +11,28 @@ import Speedometer, {
   DangerPath
 } from 'react-native-cool-speedometer';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getThingsSchema } from '../src/graphql/queries';
-// import { listThingsSchemas } from '../src/graphql/queries';
+import { getSensorInfo } from '../src/graphql/queries';
 
 const GasGauge = () => {
   const [value, setValue] = useState(0);
 
-  // const fetchGasData = async()=> {
-  //   try {
-  //     const GasData = await API.graphql(graphqlOperation(getThingsSchema, { id: '1689007772457' }));
-  //     console.log(GasData);
-  //   } catch (error) {
-  //     console.log("Error while fetching Gas Data", error);
-  //   }
-  // }
+  const fetchGasData = async()=> {
+    try {
+      const GasData = await API.graphql(graphqlOperation(getSensorInfo, {id: 'ID'}))
+      const gasInfo = GasData.data.getSensorInfo;
+      const gasStatus = JSON.parse(gasInfo.Status).message;
+      // console.log(gasStatus);
+      setValue(gasStatus);
+    } catch (error) {
+      console.log("Error while fetching Gas Data", error);
+    }
+  }
 
-  // useEffect(()=>{
-  //   fetchGasData();
-  // },[])
+  setInterval(fetchGasData, 1000);
+
+  useEffect(()=>{
+    fetchGasData();
+  },[])
 
   return (
     <SafeAreaView>

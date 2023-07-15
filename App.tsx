@@ -44,17 +44,22 @@ const App = () => {
 
   return(
     <ScrollView>
+      <SafeAreaView>
     <View style={styles.container}>
       <View style={styles.nav}>
       <Text style={styles.msg}>Welcome, {username}</Text>
       <SignOutButton />
       </View>
       <View style={styles.buttonContainer}>
-      <Light />
+      <Light Things="RelayPin1"/>
+      {/* <Light Things="RelayPin2"/> */}
+      {/* <Light Things="RelayPin3"/> */}
+      {/* <Light Things="RelayPin4"/> */}
       </View>
       <Fan />
       <GasGauge />
     </View>
+    </SafeAreaView>
     </ScrollView>
   )
 };
@@ -81,6 +86,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     width: '70%',
   }
