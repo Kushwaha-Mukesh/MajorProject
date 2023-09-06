@@ -4,14 +4,16 @@
 export const onCreateThingsSchema = /* GraphQL */ `
   subscription OnCreateThingsSchema(
     $filter: ModelSubscriptionThingsSchemaFilterInput
+    $owner: String
   ) {
-    onCreateThingsSchema(filter: $filter) {
+    onCreateThingsSchema(filter: $filter, owner: $owner) {
       Things_id
       Things
       Status
       id
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -19,14 +21,16 @@ export const onCreateThingsSchema = /* GraphQL */ `
 export const onUpdateThingsSchema = /* GraphQL */ `
   subscription OnUpdateThingsSchema(
     $filter: ModelSubscriptionThingsSchemaFilterInput
+    $owner: String
   ) {
-    onUpdateThingsSchema(filter: $filter) {
+    onUpdateThingsSchema(filter: $filter, owner: $owner) {
       Things_id
       Things
       Status
       id
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -34,21 +38,23 @@ export const onUpdateThingsSchema = /* GraphQL */ `
 export const onDeleteThingsSchema = /* GraphQL */ `
   subscription OnDeleteThingsSchema(
     $filter: ModelSubscriptionThingsSchemaFilterInput
+    $owner: String
   ) {
-    onDeleteThingsSchema(filter: $filter) {
+    onDeleteThingsSchema(filter: $filter, owner: $owner) {
       Things_id
       Things
       Status
       id
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onCreateSensorInfo = /* GraphQL */ `
-  subscription OnCreateSensorInfo($id: String) {
-    onCreateSensorInfo(id: $id) {
+  subscription OnCreateSensorInfo($id: String, $Status: String) {
+    onCreateSensorInfo(id: $id, Status: $Status) {
       id
       Status
       __typename
@@ -56,8 +62,8 @@ export const onCreateSensorInfo = /* GraphQL */ `
   }
 `;
 export const onUpdateSensorInfo = /* GraphQL */ `
-  subscription OnUpdateSensorInfo($id: String) {
-    onUpdateSensorInfo(id: $id) {
+  subscription OnUpdateSensorInfo($id: String, $Status: String) {
+    onUpdateSensorInfo(id: $id, Status: $Status) {
       id
       Status
       __typename
@@ -65,101 +71,8 @@ export const onUpdateSensorInfo = /* GraphQL */ `
   }
 `;
 export const onDeleteSensorInfo = /* GraphQL */ `
-  subscription OnDeleteSensorInfo($id: String) {
-    onDeleteSensorInfo(id: $id) {
-      id
-      Status
-      __typename
-    }
-  }
-`;
-export const onCreateManualSwitch = /* GraphQL */ `
-  subscription OnCreateManualSwitch($id: String, $Status: AWSJSON) {
-    onCreateManualSwitch(id: $id, Status: $Status) {
-      id
-      Status
-      __typename
-    }
-  }
-`;
-export const onUpdateManualSwitch = /* GraphQL */ `
-  subscription OnUpdateManualSwitch($id: String, $Status: AWSJSON) {
-    onUpdateManualSwitch(id: $id, Status: $Status) {
-      id
-      Status
-      __typename
-    }
-  }
-`;
-export const onDeleteManualSwitch = /* GraphQL */ `
-  subscription OnDeleteManualSwitch($id: String, $Status: AWSJSON) {
-    onDeleteManualSwitch(id: $id, Status: $Status) {
-      id
-      Status
-      __typename
-    }
-  }
-`;
-export const onCreateManualSwitch1 = /* GraphQL */ `
-  subscription OnCreateManualSwitch1(
-    $ID: String
-    $createdAt: String
-    $Status: AWSJSON
-  ) {
-    onCreateManualSwitch1(ID: $ID, createdAt: $createdAt, Status: $Status) {
-      ID
-      Status
-      __typename
-    }
-  }
-`;
-export const onUpdateManualSwitch1 = /* GraphQL */ `
-  subscription OnUpdateManualSwitch1(
-    $ID: String
-    $createdAt: String
-    $Status: AWSJSON
-  ) {
-    onUpdateManualSwitch1(ID: $ID, createdAt: $createdAt, Status: $Status) {
-      ID
-      Status
-      __typename
-    }
-  }
-`;
-export const onDeleteManualSwitch1 = /* GraphQL */ `
-  subscription OnDeleteManualSwitch1(
-    $ID: String
-    $createdAt: String
-    $Status: AWSJSON
-  ) {
-    onDeleteManualSwitch1(ID: $ID, createdAt: $createdAt, Status: $Status) {
-      ID
-      Status
-      __typename
-    }
-  }
-`;
-export const onCreateManualStatusTable = /* GraphQL */ `
-  subscription OnCreateManualStatusTable($id: String, $Status: String) {
-    onCreateManualStatusTable(id: $id, Status: $Status) {
-      id
-      Status
-      __typename
-    }
-  }
-`;
-export const onUpdateManualStatusTable = /* GraphQL */ `
-  subscription OnUpdateManualStatusTable($id: String, $Status: String) {
-    onUpdateManualStatusTable(id: $id, Status: $Status) {
-      id
-      Status
-      __typename
-    }
-  }
-`;
-export const onDeleteManualStatusTable = /* GraphQL */ `
-  subscription OnDeleteManualStatusTable($id: String, $Status: String) {
-    onDeleteManualStatusTable(id: $id, Status: $Status) {
+  subscription OnDeleteSensorInfo($id: String, $Status: String) {
+    onDeleteSensorInfo(id: $id, Status: $Status) {
       id
       Status
       __typename

@@ -20,8 +20,9 @@ const GasGauge = () => {
     try {
       const GasData = await API.graphql(graphqlOperation(getSensorInfo, {id: 'ID'}))
       const gasInfo = GasData.data.getSensorInfo;
-      const gasStatus = JSON.parse(gasInfo.Status).message;
-      // console.log(gasStatus);
+      const gasString = gasInfo.Status
+      const gasjson = JSON.parse(gasString)
+      const gasStatus = gasjson.message;
       setValue(gasStatus);
     } catch (error) {
       console.log("Error while fetching Gas Data", error);
@@ -29,10 +30,6 @@ const GasGauge = () => {
   }
 
   setInterval(fetchGasData, 1000);
-
-  useEffect(()=>{
-    fetchGasData();
-  },[])
 
   return (
     <SafeAreaView>

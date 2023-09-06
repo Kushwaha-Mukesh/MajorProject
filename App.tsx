@@ -51,10 +51,10 @@ const App = () => {
       <SignOutButton />
       </View>
       <View style={styles.buttonContainer}>
-      <Light Things="RelayPin1"/>
-      {/* <Light Things="RelayPin2"/> */}
-      {/* <Light Things="RelayPin3"/> */}
-      {/* <Light Things="RelayPin4"/> */}
+      <Light Things="RelayPin1" title="switch1"/>
+      <Light Things="RelayPin2" title="switch2"/>
+      <Light Things="RelayPin3" title="switch3"/>
+      <Light Things="RelayPin4" title="switch4"/>
       </View>
       <Fan />
       <GasGauge />

@@ -4,8 +4,17 @@
     "apiName": "majorproject",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7
-    }
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authmajorproject2ecf1869"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 50,
+        "apiKeyExpirationDate": "2023-09-17T05:18:11.685Z",
+        "keyDescription": "new api key for major project"
+      }
+    ]
   }
 }
